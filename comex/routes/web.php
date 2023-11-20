@@ -19,10 +19,8 @@ Route::get('/', function () {
 });
 
 Route::resource('categorias', CategoriasController::class)
-    ->only(['index','create','store']);
+    ->only(['index','create','store','destroy']);
 
-Route::post('/categorias/destroy/{id}', [CategoriasController::class,'destroy'])
-    ->name('categorias.destroy');
 /*
 Route::get('/categorias',[CategoriasController::class,'index'])->name('categorias.index');
 Route::get('/categorias/create',[CategoriasController::class,'create'])->name('categorias.create');
