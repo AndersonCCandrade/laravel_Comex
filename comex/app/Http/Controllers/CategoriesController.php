@@ -13,7 +13,7 @@ class CategoriesController extends Controller
     public function index()
     {
         $categoria = Categoria::query()->orderBy('nome')->get();
-        dd($categoria);
+
         return view("categorias.index", compact('categoria'));
     }
 
@@ -22,7 +22,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('categorias.create');
     }
 
     /**
@@ -30,7 +30,10 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Categoria::create($request->all());
+
+        return to_route('categorias.index');
+
     }
 
     /**

@@ -19,3 +19,5 @@ Route::get('/', function () {
 });
 
 Route::get('/categorias',[CategoriesController::class,'index'])->name('categorias.index');
+Route::get('/categorias/create',[CategoriesController::class,'create'])->name('categorias.create');
+Route::post('/categorias',[CategoriesController::class,'store'])->name('categorias.store');
