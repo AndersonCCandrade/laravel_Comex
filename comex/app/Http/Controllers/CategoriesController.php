@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
@@ -11,17 +12,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $categoria = [
-            'CELULARES',
-            'INFORMÁTICA',
-            'MÓVEIS',
-            'AUTOMOTIVA',
-            'LIVROS',
-            'BELEZA',
-            'ESPORTE',
-            'LUXO'
-        ];
-
+        $categoria = Categoria::query()->orderBy('nome')->get();
+        dd($categoria);
         return view("categorias.index", compact('categoria'));
     }
 
