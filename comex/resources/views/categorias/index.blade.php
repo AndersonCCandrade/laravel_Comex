@@ -12,9 +12,18 @@
     <br>
     <ul >
         @foreach ($categoria as $list)
-            <li>
-               {{$list->nome}}
-            </li>
+                <li>
+                    <div>
+                    {{$list->nome}}
+
+                    <form action="{{ route('categorias.destroy', $list->id) }}" method="post">
+                        @csrf
+
+                        <button >X</button>
+                    </form>
+                    </div>
+                </li>
+            <br>
         @endforeach
     </ul>
 </x-layout>

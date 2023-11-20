@@ -70,8 +70,10 @@ class CategoriasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+       Categoria::destroy($request->id);
+
+        return to_route('categorias.index')->with('mensagem.sucesso', "Categoria '{$request->nome}' removida com sucesso");
     }
 }
