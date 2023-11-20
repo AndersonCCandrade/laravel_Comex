@@ -2,19 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoriasFormRequest;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
 
-class CategoriesController extends Controller
+class CategoriasController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $categoria = Categoria::query()->orderBy('nome')->get();
+        $mensagemSucesso = session('mensagem.sucesso');
 
-        return view("categorias.index", compact('categoria'));
+
+        return view("categorias.index", compact('categoria'))
+            ->with('mensagemSucesso', $mensagemSucesso);
     }
 
     /**
@@ -28,11 +32,14 @@ class CategoriesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CategoriasFormRequest $request)
     {
-        Categoria::create($request->all());
 
-        return to_route('categorias.index');
+        $categoria = Categoria::create($request->all());
+
+
+        return to_route('categorias.index')
+            ->with('mensagem.sucesso', "Categoria '{$categoria->nome}' adicionada com sucesso");
 
     }
 
