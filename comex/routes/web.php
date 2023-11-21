@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\ProdutosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,11 +19,15 @@ Route::get('/', function () {
     return redirect('categorias');
 });
 
+
 Route::resource('categorias', CategoriasController::class)
     ->except(['show']);
 
+Route::resource('produtos', ProdutosController::class)
+    ->only(['index','create','store']);
+
 /*
-Route::get('/categorias',[CategoriasController::class,'index'])->name('categorias.index');
+
 Route::get('/categorias/create',[CategoriasController::class,'create'])->name('categorias.create');
 Route::post('/categorias',[CategoriasController::class,'store'])->name('categorias.store');
 */
