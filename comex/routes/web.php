@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 Route::resource('categorias', CategoriasController::class)
-    ->only(['index','create','store','destroy']);
+    ->except(['show']);
 
 /*
 Route::get('/categorias',[CategoriasController::class,'index'])->name('categorias.index');

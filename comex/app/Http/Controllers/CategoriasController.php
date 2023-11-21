@@ -43,28 +43,21 @@ class CategoriasController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function edit(Categoria $categoria)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+        return view('categorias.edit')->with('categoria', $categoria);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Categoria $categoria, CategoriasFormRequest $request)
     {
-        //
+        $categoria->fill($request->all());
+        $categoria->save();
+
+        return to_route('categorias.index')
+            ->with('mensagem.sucesso', "Categoria '{$categoria->nome}' atualizada com sucesso");
     }
 
     /**

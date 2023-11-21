@@ -13,15 +13,19 @@
     <ul >
         @foreach ($categoria as $list)
                 <li>
-                    <div>
                     {{$list->nome}}
+                    <span>
+                        <form action="{{ route('categorias.destroy', $list->id) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button >Remover</button>
+                        </form>
+                        <form action="{{ route('categorias.edit', $list->id) }}" method="post">
+                            @method('GET')
+                            <button >Editar</button>
+                        </form>
+                    </span>
 
-                    <form action="{{ route('categorias.destroy', $list->id) }}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <button >X</button>
-                    </form>
-                    </div>
                 </li>
             <br>
         @endforeach
