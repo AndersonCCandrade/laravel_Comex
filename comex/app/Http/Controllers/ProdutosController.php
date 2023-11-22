@@ -12,7 +12,7 @@ class ProdutosController extends Controller
      */
     public function index(Request $request)
     {
-        $produtos = Produto::query()->orderBy('nome')->get();
+        $produtos = Produto::all();
         $mensagemSucesso = session('mensagem.sucesso');
 
 

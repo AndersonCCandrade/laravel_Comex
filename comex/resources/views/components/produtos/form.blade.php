@@ -8,17 +8,17 @@
         </div>
 
         <div class="col-4">
-            <label for="nome" class="form-label">Descrição:</label>
+            <label for="descricao" class="form-label">Descrição:</label>
             <input type="text" id="descricao" name="descricao" class="form-control">
         </div>
 
         <div class="col-2">
-            <label for="nome" class="form-label">Preço Unitário:</label>
+            <label for="precoUnitario" class="form-label">Preço Unitário:</label>
             <input type="number" step="0.01" min="0.01" id="precoUnitario" name="precoUnitario" class="form-control">
         </div>
 
         <div class="col-2">
-            <label for="nome" class="form-label">Quantidade em Estoque:</label>
+            <label for="nqtdEstoque" class="form-label">Quantidade em Estoque:</label>
             <input type="number" min="0" id="qtdEstoque" name="qtdEstoque" class="form-control">
         </div>
     </div>

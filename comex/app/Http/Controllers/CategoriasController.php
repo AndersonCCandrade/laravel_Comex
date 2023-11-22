@@ -13,7 +13,7 @@ class CategoriasController extends Controller
      */
     public function index(Request $request)
     {
-        $categoria = Categoria::query()->orderBy('nome')->get();
+        $categoria = Categoria::all();
         $mensagemSucesso = session('mensagem.sucesso');
 
 

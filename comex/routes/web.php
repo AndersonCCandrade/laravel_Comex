@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\ProdutosController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,9 @@ Route::resource('categorias', CategoriasController::class)
 
 Route::resource('produtos', ProdutosController::class)
     ->only(['index','create','store']);
+
+Route::resource('clientes', ClientesController::class)
+    ->only(['index','index','create','store']);
 
 /*
 
