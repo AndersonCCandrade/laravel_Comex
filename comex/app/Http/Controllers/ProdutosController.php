@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProdutosFormRequest;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 
@@ -31,13 +32,47 @@ class ProdutosController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProdutosFormRequest $request)
     {
+
         $produtos = Produto::create($request->all());
 
 
         return to_route('produtos.index')
             ->with('mensagem.sucesso', "Produto '{$produtos->nome}' adicionada com sucesso");
     }
+
+    /**
+     * Edit the specified resource in storage.
+     */
+    public function edit(Produto $produto)
+    {
+        return view('produtos.edit')->with('produtos', $produto);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Produto $produto,  ProdutosFormRequest $request)
+    {
+        $produto->fill($request->all());
+        $produto->save();
+
+        return to_route('produtos.index')
+            ->with('mensagem.sucesso', "Produto '{$produto->nome}' atualizado com sucesso");
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Produto $produto)
+    {
+
+        $produto->delete();
+
+        return to_route('produtos.index')
+            ->with('mensagem.sucesso', "Produto '{$produto->nome}' removido com sucesso");
+    }
+
 
 }

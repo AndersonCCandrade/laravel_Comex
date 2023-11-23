@@ -25,7 +25,7 @@ Route::resource('categorias', CategoriasController::class)
     ->except(['show']);
 
 Route::resource('produtos', ProdutosController::class)
-    ->only(['index','create','store']);
+    ->except(['show']);
 
 Route::resource('clientes', ClientesController::class)
     ->only(['index','index','create','store']);

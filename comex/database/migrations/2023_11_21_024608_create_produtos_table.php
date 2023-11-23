@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('produtos', function (Blueprint $table) {
             $table->id();
-            $table->string('nome','128');
+            $table->string('nome','50');
             $table->text('descricao');
-            $table->float('precoUnitario', 8, 2);
+            $table->float('precoUnitario',8,2);
             $table->integer('qtdEstoque');
             $table->timestamps();
         });

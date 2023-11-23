@@ -15,21 +15,34 @@
             <div class="row">
                 <label for="nome" class="form-label col-3">Nome: </label>
                 <label for="nome" class="form-label col-3">Descrição: </label>
-                <label for="nome" class="form-label col-3">Preço R$: </label>
-                <label for="nome" class="form-label col-3">Quantidade: </label>
+                <label for="nome" class="form-label col-2">Preço R$: </label>
+                <label for="nome" class="form-label col-2">Quantidade: </label>
             </div>
 
         </div>
         <br>
         @foreach ($produtos as $produto)
+
             <li class="list-group-item text-start list-group-item">
-                <div class="row">
+                <span class="row">
                     <div class="col-3 d-flex" >{{$produto->nome}}</div>
                     <div class="col-3 d-flex" >{{$produto->descricao}}</div>
-                    <div class="col-3 d-flex" >{{$produto->precoUnitario}}</div>
-                    <div class="col-3 d-flex" >{{$produto->qtdEstoque}}</div>
-                </div>
+                    <div class="col-2 d-flex" >{{$produto->precoUnitario}}</div>
+                    <div class="col-2 d-flex" >{{$produto->qtdEstoque}}</div>
+                    <div class="col-2 d-flex">
+                        <form action="{{ route('produtos.destroy', $produto->id) }}" method="post">
 
+                            <a href="{{ route('produtos.edit', $produto->id) }}" class="btn btn-primary btn-sm">
+                               Editar
+                            </a>
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger btn-sm">Remover</button>
+
+                        </form>
+                    </div>
+
+                </span>
             </li>
         @endforeach
 
