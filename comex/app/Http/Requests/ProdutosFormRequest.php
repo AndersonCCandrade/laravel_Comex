@@ -23,17 +23,27 @@ class ProdutosFormRequest extends FormRequest
     {
         return [
             'nome'=> ['required', 'max:50'],
-            'precoUnitario'=>[
-                function ($attribute, $value, $fail) {
-                    if ($value <= 0 ) {
-                        $fail('O campo preço unitario deve ser maior que 0.');
-                    }
-                }],
-            'qtdEstoque'=>[function ($attribute, $value, $fail) {
-                    if ($value < 1 ||$value >1000 ) {
-                        $fail('O campo quantidade em estoque deve estar entre 1 e 1000.');
-                    }
-                }]
+            'precoUnitario'=> ['gt:0'],
+            'qtdEstoque'=> ['gte:0', 'lte:1000']
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'required' => "O campo ':attribute' é obrigatório.",
+            'max' => "O campo ':attribute' não deve ter mais que :max caracter",
+            'gt' => "O campo ':attribute' deve ser maior que :value.",
+            'gte' => "O campo ':attribute' deve ser maior ou igual a :value.",
+            'lte' => "O campo ':attribute' deve ser menor ou igual a :value."
+        ];
+    }
+
+    public function attributes(): array
+    {
+        return [
+            'precoUnitario' => 'preço unitário',
+            'qtdEstoque'=>'quantidade em estoque',
         ];
     }
 
