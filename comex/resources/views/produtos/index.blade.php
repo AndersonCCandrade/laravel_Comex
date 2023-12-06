@@ -38,7 +38,6 @@
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger btn-sm">Remover</button>
-
                         </form>
                     </div>
 

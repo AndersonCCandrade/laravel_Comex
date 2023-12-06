@@ -11,15 +11,11 @@
                id="nome"
                name="nome"
                class="form-control"
-               @isset($nome) value="{{ $nome }}" @endisset
+               value="{{ isset($nome) ? $nome : old('nome') }}"
         >
     </div>
 
     <button type="submit" class="btn btn-primary">
-        @isset($nome)
-            Atualizar
-        @else
-            Adicionar
-        @endisset
+        {{isset($nome) ? "Atualizar" : "Adicionar"}}
     </button>
 </form>

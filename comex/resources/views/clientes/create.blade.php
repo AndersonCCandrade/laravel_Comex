@@ -1,3 +1,3 @@
 <x-layout title="Novo Cliente">
-    <x-clientes.form :action="route('clientes.store')" />
+    <x-clientes.form :action="route('clientes.store')" :$ufs/>
 </x-layout>

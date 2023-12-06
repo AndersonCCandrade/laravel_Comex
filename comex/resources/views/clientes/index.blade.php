@@ -1,6 +1,5 @@
 <x-layout title="Clientes">
     <br>
-
     @isset($mensagemSucesso)
         <div class="alert alert-success">
             {{$mensagemSucesso}}
@@ -14,19 +13,18 @@
         @foreach ($clientes as $cliente)
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 {{$cliente->nome}}
-            <!--    <span>
-                        <form action="{{ route('categorias.destroy', $cliente->id) }}" method="post">
+                <span>
+                    <form action="{{ route('clientes.destroy', $cliente->id) }}" method="post">
 
-                            <a href="{{ route('categorias.edit', $cliente->id) }}" class="btn btn-primary btn-sm">
-                               Editar
-                            </a>
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger btn-sm">Remover</button>
+                        <a href="{{ route('clientes.edit', $cliente->id) }}" class="btn btn-primary btn-sm">
+                            Editar
+                        </a>
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger btn-sm">Remover</button>
 
-                        </form>
-                    </span>
-            -->
+                    </form>
+                </span>
             </li>
             <br>
         @endforeach

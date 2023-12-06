@@ -22,28 +22,30 @@ class ProdutosFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nome'=> ['required', 'max:50'],
-            'precoUnitario'=> ['gt:0'],
-            'qtdEstoque'=> ['gte:0', 'lte:1000']
+            'nome'              => ['required', 'max:50'],
+            'descricao'         => ['required', 'max:256'],
+            'precoUnitario'     => ['required','gt:0'],
+            'qtdEstoque'        => ['required','numeric', 'between: 0,1000']
         ];
     }
 
     public function messages()
     {
         return [
-            'required' => "O campo ':attribute' é obrigatório.",
-            'max' => "O campo ':attribute' não deve ter mais que :max caracter",
-            'gt' => "O campo ':attribute' deve ser maior que :value.",
-            'gte' => "O campo ':attribute' deve ser maior ou igual a :value.",
-            'lte' => "O campo ':attribute' deve ser menor ou igual a :value."
+            'required'  => "O campo ':attribute' é obrigatório.",
+            'max'       => "O campo ':attribute' não deve ter mais que :max caracter",
+            'gt'        => "O campo ':attribute' deve ser maior que :value.",
+            'between'   => "O campo ':attribute' deve estar entre :min e :max.",
+            'numeric'   => "O campo ':attribute' deve ser um número."
         ];
     }
 
     public function attributes(): array
     {
         return [
-            'precoUnitario' => 'preço unitário',
-            'qtdEstoque'=>'quantidade em estoque',
+            'descricao'     => 'Descrição',
+            'precoUnitario' => 'Preço unitário',
+            'qtdEstoque'    => 'Quantidade em estoque',
         ];
     }
 

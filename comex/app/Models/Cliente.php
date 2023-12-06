@@ -10,10 +10,10 @@ class Cliente extends Model
 {
     use HasFactory;
     protected $fillable = ['nome','cpf','telefone'];
-    //protected $with = ['endereços'];
+
     public function enderecos()
     {
-       return $this->hasMany(Endereco::class);
+       return $this->hasOne(Endereco::class);
     }
 
     protected static function booted()
