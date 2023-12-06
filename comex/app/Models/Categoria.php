@@ -9,7 +9,15 @@ use Illuminate\Database\Eloquent\Model;
 class Categoria extends Model
 {
     use HasFactory;
-    protected $fillable = ['nome'];
+    protected $fillable = [
+        'nome',
+        'categoria_id',
+    ];
+
+    public function produtos()
+    {
+        return $this->hasMany(Produto::class);
+    }
 
     protected static function booted()
     {
@@ -17,4 +25,5 @@ class Categoria extends Model
             $queryBuilder->orderBy('nome');
         });
     }
+
 }

@@ -22,10 +22,11 @@ class ProdutosFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nome'              => ['required', 'max:50'],
-            'descricao'         => ['required', 'max:256'],
+            'nome'              => ['required', 'string', 'max:50'],
+            'descricao'         => ['required', 'string', 'max:256'],
             'precoUnitario'     => ['required','gt:0'],
-            'qtdEstoque'        => ['required','numeric', 'between: 0,1000']
+            'qtdEstoque'        => ['required','numeric', 'between: 0,1000'],
+            'categoria_id'      => ['required','string','exists:categorias,id']
         ];
     }
 
@@ -33,10 +34,12 @@ class ProdutosFormRequest extends FormRequest
     {
         return [
             'required'  => "O campo ':attribute' é obrigatório.",
+            'string'    => "O campo ':attribute' deve ser texto",
             'max'       => "O campo ':attribute' não deve ter mais que :max caracter",
             'gt'        => "O campo ':attribute' deve ser maior que :value.",
             'between'   => "O campo ':attribute' deve estar entre :min e :max.",
-            'numeric'   => "O campo ':attribute' deve ser um número."
+            'numeric'   => "O campo ':attribute' deve ser um número.",
+            'exists'    => "O campo ':attribute' selecionado é inválido."
         ];
     }
 
@@ -46,6 +49,7 @@ class ProdutosFormRequest extends FormRequest
             'descricao'     => 'Descrição',
             'precoUnitario' => 'Preço unitário',
             'qtdEstoque'    => 'Quantidade em estoque',
+            'categoria_id'  => 'Categoria'
         ];
     }
 

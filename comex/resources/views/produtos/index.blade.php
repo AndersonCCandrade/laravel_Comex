@@ -13,8 +13,9 @@
     <ul class="list-group">
         <div class="container text-start list-group-item fw-bold" >
             <div class="row">
-                <label for="nome" class="form-label col-3">Nome: </label>
-                <label for="nome" class="form-label col-3">Descrição: </label>
+                <label for="nome" class="form-label col-2">Nome: </label>
+                <label for="nome" class="form-label col-2">Descrição: </label>
+                <label for="nome" class="form-label col-2">Categoria: </label>
                 <label for="nome" class="form-label col-2">Preço R$: </label>
                 <label for="nome" class="form-label col-2">Quantidade: </label>
             </div>
@@ -25,8 +26,9 @@
 
             <li class="list-group-item text-start list-group-item">
                 <span class="row">
-                    <div class="col-3 d-flex" >{{$produto->nome}}</div>
-                    <div class="col-3 d-flex" >{{$produto->descricao}}</div>
+                    <div class="col-2 d-flex" >{{$produto->nome}}</div>
+                    <div class="col-2 d-flex" >{{$produto->descricao}}</div>
+                    <div class="col-2 d-flex" >{{$produto->categoria->nome}}</div>
                     <div class="col-2 d-flex" >{{$produto->precoUnitario}}</div>
                     <div class="col-2 d-flex" >{{$produto->qtdEstoque}}</div>
                     <div class="col-2 d-flex">

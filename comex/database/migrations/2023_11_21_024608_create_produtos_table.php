@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('descricao');
             $table->float('precoUnitario',8,2);
             $table->integer('qtdEstoque');
+            $table->foreignId('categoria_id')->constrained();
             $table->timestamps();
         });
     }

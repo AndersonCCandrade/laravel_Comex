@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProdutosFormRequest;
+use App\Models\Categoria;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,6 @@ class ProdutosController extends Controller
         $produtos = Produto::all();
         $mensagemSucesso = session('mensagem.sucesso');
 
-
         return view("produtos.index", compact('produtos'))
             ->with('mensagemSucesso', $mensagemSucesso);
     }
@@ -24,9 +24,9 @@ class ProdutosController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        return view('produtos.create');
+    public function create()    {
+
+        return view('produtos.create', ['categorias' => Categoria::all()]);
     }
 
     /**
@@ -47,7 +47,8 @@ class ProdutosController extends Controller
      */
     public function edit(Produto $produto)
     {
-        return view('produtos.edit')->with('produtos', $produto);
+        return view('produtos.edit', ['categorias' => Categoria::all()])
+            ->with('produtos', $produto);
     }
 
     /**
